@@ -8,19 +8,19 @@ class StackTest < Minitest::Test
 
 	def test_push!
 		stack = Stack.new([1])
-		expected = [1,2]
+		expected = [1, 2]
 		assert(stack.push!(2) == expected)
 	end
 
 	def test_pop!
-		stack = Stack.new([1,2,3])
-		expected = [1,2]
+		stack = Stack.new([1, 2, 3])
+		expected = [1, 2]
 		stack.pop!
 		assert(stack.to_a == expected)
 	end
 
 	def test_clear!
-		stack = Stack.new([1,2])
+		stack = Stack.new([1, 2])
 		expected_size = 0
 		stack.clear!
 		assert(stack.size == 0)
