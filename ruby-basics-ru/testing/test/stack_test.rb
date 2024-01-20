@@ -10,6 +10,7 @@ class StackTest < Minitest::Test
 		stack = Stack.new([1])
 		expected = [1, 2]
 		assert(stack.push!(2) == expected)
+    assert(stack.size == 2)
 	end
 
 	def test_pop!
@@ -17,17 +18,18 @@ class StackTest < Minitest::Test
 		expected = [1, 2]
 		stack.pop!
 		assert(stack.to_a == expected)
+    assert(stack.size == 2)
 	end
 
 	def test_clear!
-		stack = Stack.new([1, 2])
-		expected_size = 0
+    stack = Stack.new([1, 2])
+		assert(!stack.empty?)
 		stack.clear!
-		assert(stack.size == 0)
+		assert(stack.empty?)
 	end
 	
 	def test_empty?
-	 	stack = Stack.new([])
+	 	stack = Stack.new
 		assert(stack.empty? == true)
 	end
 
