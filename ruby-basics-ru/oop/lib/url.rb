@@ -5,10 +5,10 @@ require 'uri'
 require 'forwardable'
 
 class Url
-  attr_reader :url, :uri
-
   extend Forwardable
   include Comparable
+  
+  attr_reader :url, :uri
 
   def initialize(url)
     @url = url
@@ -33,12 +33,7 @@ class Url
   end
 
   def <=>(other)
-    if (url == other.url) ||
-      (scheme == other.scheme && port == other.port && host == other.host && query_params == other.query_params)
-      0
-    else
-      1
-    end
+    [scheme, port, host, query_params] <=> [other.scheme, other.port, other.host, other.query_params]
   end
 end
 # END
